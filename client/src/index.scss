@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-		"Helvetica Neue", sans-serif;
+	box-sizing: border-box;
+	font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background: #000000e6;
+	color: #ffffff;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 @layer base {
@@ -70,5 +72,38 @@ code {
 		--chart-3: 30 80% 55%;
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%;
+	}
+}
+
+.header {
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		pointer-events: none;
+		background: linear-gradient(to right, #ffffff 0%, #11111100 50%);
+	}
+}
+
+.swiper {
+	overflow: visible !important;
+
+	&-slide {
+		width: auto !important;
+	}
+}
+
+.logo {
+	box-shadow: 0 6px 128px 0 rgba(255, 255, 255, 0.22);
+}
+
+.title {
+	b,
+	strong {
+		font-weight: 600;
+		color: #5597f2;
 	}
 }

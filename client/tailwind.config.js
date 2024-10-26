@@ -4,11 +4,19 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#0F172A",
-				secondary: "#64748B",
-				tertiary: "#94A3B8",
-				quaternary: "#CBD5E1",
-			}
+				current: "#000000e6",
+				primary: {
+					DEFAULT: "#5597f2",
+					45: "rgba(0, 85, 255, 0.45)",
+					50: "rgba(0, 85, 255, 0.5)",
+				},
+				white: {
+					DEFAULT: "#FFFFFF",
+					50: "rgba(255, 255, 255, 0.5)",
+					65: "rgba(255, 255, 255, 0.65)",
+					85: "rgba(255, 255, 255, 0.85)",
+				},
+			},
 		},
 	},
 	plugins: [],

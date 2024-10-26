@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from 'react';
-import Main from "./components/Main";
+import Body from "./components/Body";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 				<meta property="og:title" content="dev/richer" />
 				<meta property="og:description" content="dev/richer" />
 			</Helmet>
-			<Main />
+			<Body />
 		</>
 	);
 }
