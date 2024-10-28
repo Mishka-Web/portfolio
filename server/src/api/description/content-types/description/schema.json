@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "descriptions",
+  "info": {
+    "singularName": "description",
+    "pluralName": "descriptions",
+    "displayName": "Основной экран",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "heading": {
+      "type": "string"
+    }
+  }
+}

@@ -1,26 +1,38 @@
-// import React, { useEffect, useState } from 'react';
-import Body from "./components/Body";
 import { Helmet } from "react-helmet";
+import BlockInfo from "./components/BlockInfo";
+import BlockMain from "./components/BlockMain";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+import favicon from "./assets/images/icons/favicon.ico";
 
 function App() {
-	// const [posts, setPosts] = useState([]);
+	const [seo, setSeo] = useState([]);
 
-	// useEffect(() => {
-	// 	fetch("http://localhost:1337/api/posts")
-	// 		.then((response) => response.json())
-	// 		.then((data) => setPosts(data));
-	// }, []);
+	useEffect(() => {
+		axios
+			.get("http://localhost:1337/api/main")
+			.then((response) => setSeo(response.data.data));
+	}, []);
 
 	return (
 		<>
 			<Helmet>
-				<title>Portfolio | dev/richer</title>
-				<meta name="description" content="dev/richer" />
-				<link rel="canonical" href="https://devricher.com" />
-				<meta property="og:title" content="dev/richer" />
-				<meta property="og:description" content="dev/richer" />
+				<title>{seo.title}</title>
+				<meta name="description" content={seo.desc} />
+				<meta property="og:title" content={seo.title} />
+				<meta property="og:description" content={seo.desc} />
+				<meta property="og:image" content={favicon} />
+				<link rel="icon" href={favicon} />
+				<link rel="apple-touch-icon" href={favicon} />
+				<meta name="theme-color" content="#ffffff" />
+				<meta name="msapplication-TileColor" content="#ffffff" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</Helmet>
-			<Body />
+			<div className="grid grid-cols-[1fr_0.9fr] w-full h-screen">
+				<BlockMain />
+				<BlockInfo />
+			</div>
 		</>
 	);
 }

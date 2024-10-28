@@ -1,31 +1,49 @@
-import profileImgSrc from "../assets/images/me.jpg";
-import bg from "../assets/images/bg.png";
+import React from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
+import ReactMarkdown from "react-markdown";
+import axios from "axios";
 
 export default function BlockMain() {
+	const [desc, setDesc] = useState([]);
+
+	useEffect(() => {
+		axios
+			.get("http://localhost:1337/api/description/?populate=*")
+			.then((response) => setDesc(response.data.data));
+	}, []);
+
 	return (
-		<div className="flex flex-col h-screen text-center items-center justify-end relative">
-			<Header />
-			<div className="flex w-full pt-0 p-6 pb-[86px] z-10 flex-col items-center gap-[55px]">
-				<img
-					className="logo max-w-[50%] pointer-events-none select-none z-30 w-full h-full rounded-full aspect-square object-contain"
-					src={profileImgSrc}
-					alt=""
-				/>
-				<div className="flex flex-col gap-[25px] text-center">
-					<h2 className="text-[31px] text-white-65 font-normal">
-						Hey! this is <b className="text-primary">Richer,</b>
-					</h2>
-					<p className="text-2xl font-light text-white-50">
-						I’m a Web Developer based in Yekaterinburg
-					</p>
+		<div className="flex flex-col h-screen text-center items-center justify-center relative">
+			<Header title={desc.heading ?? "DEV/RICHER"} />
+			<div className="flex w-full p-6 py-0 z-10 flex-col items-center gap-[4vh] mt-[15vh] mb-[5vh]">
+				{desc.image && (
+					<img
+						className="logo max-w-[85%] max-h-[55vh] pointer-events-none select-none z-30 rounded-full aspect-square object-contain"
+						src={"http://localhost:1337" + desc.image.url}
+						alt=""
+					/>
+				)}
+				<div className="flex flex-col gap-[1.5vh] text-center">
+					{desc.title && (
+						<div className="text-[1.5vw] text-white-65 font-normal title">
+							<ReactMarkdown>{desc.title}</ReactMarkdown>
+						</div>
+					)}
+					{desc.subtitle && (
+						<div className="text-[1.1vw] font-light text-white-50 text--select">
+							<ReactMarkdown>{desc.subtitle}</ReactMarkdown>
+						</div>
+					)}
 				</div>
 			</div>
-			<img
-				className="w-full h-auto pointer-events-none select-none absolute bottom-0 mix-blend-multiply bg-transparent z-0"
-				src={bg}
-				alt=""
-			/>
+			{desc.background && (
+				<img
+					className="w-full h-auto pointer-events-none select-none absolute bottom-0 mix-blend-multiply bg-transparent z-0"
+					src={"http://localhost:1337" + desc.background.url}
+					alt=""
+				/>
+			)}
 		</div>
 	);
 }

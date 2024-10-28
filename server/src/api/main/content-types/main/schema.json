@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_s",
+  "info": {
+    "singularName": "main",
+    "pluralName": "main-s",
+    "displayName": "SEO",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "string"
+    }
+  }
+}

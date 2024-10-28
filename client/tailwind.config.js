@@ -10,6 +10,9 @@ module.exports = {
 					45: "rgba(0, 85, 255, 0.45)",
 					50: "rgba(0, 85, 255, 0.5)",
 				},
+				brown: {
+					DEFAULT: "#443e38",
+				},
 				white: {
 					DEFAULT: "#FFFFFF",
 					50: "rgba(255, 255, 255, 0.5)",

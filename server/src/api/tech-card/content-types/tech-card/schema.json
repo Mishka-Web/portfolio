@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tech_cards",
+  "info": {
+    "singularName": "tech-card",
+    "pluralName": "tech-cards",
+    "displayName": "Карточки технологий",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "link": {
+      "type": "string"
+    },
+    "accentColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_cards",
+  "info": {
+    "singularName": "project-card",
+    "pluralName": "project-cards",
+    "displayName": "Карточки проектов",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

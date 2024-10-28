@@ -369,12 +369,46 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPostPost extends Struct.CollectionTypeSchema {
-  collectionName: 'posts';
+export interface ApiDescriptionDescription extends Struct.SingleTypeSchema {
+  collectionName: 'descriptions';
   info: {
-    displayName: 'Post';
-    pluralName: 'posts';
-    singularName: 'post';
+    description: '';
+    displayName: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u044D\u043A\u0440\u0430\u043D';
+    pluralName: 'descriptions';
+    singularName: 'description';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    background: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::description.description'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.RichText;
+    title: Schema.Attribute.RichText;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMainMain extends Struct.SingleTypeSchema {
+  collectionName: 'main_s';
+  info: {
+    description: '';
+    displayName: 'SEO';
+    pluralName: 'main-s';
+    singularName: 'main';
   };
   options: {
     draftAndPublish: true;
@@ -383,12 +417,76 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    desc: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::main.main'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProjectCardProjectCard extends Struct.CollectionTypeSchema {
+  collectionName: 'project_cards';
+  info: {
+    description: '';
+    displayName: '\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432';
+    pluralName: 'project-cards';
+    singularName: 'project-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project-card.project-card'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTechCardTechCard extends Struct.CollectionTypeSchema {
+  collectionName: 'tech_cards';
+  info: {
+    description: '';
+    displayName: '\u041A\u0430\u0440\u0442\u043E\u0447\u043A\u0438 \u0442\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u0439';
+    pluralName: 'tech-cards';
+    singularName: 'tech-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accentColor: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tech-card.tech-card'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.RichText;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -900,7 +998,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::post.post': ApiPostPost;
+      'api::description.description': ApiDescriptionDescription;
+      'api::main.main': ApiMainMain;
+      'api::project-card.project-card': ApiProjectCardProjectCard;
+      'api::tech-card.tech-card': ApiTechCardTechCard;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
