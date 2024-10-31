@@ -27,7 +27,7 @@ export default function Slider() {
 			mousewheel={true}
 			speed={800}
 			autoplay={{
-				delay: 7500,
+				delay: 6000,
 				disableOnInteraction: false,
 			}}
 			modules={[Navigation, Autoplay, Mousewheel]}
