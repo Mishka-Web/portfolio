@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import ContactPage from "../pages/ContactPage";
-import AboutPage from "../pages/AboutPage";
-import ProjectsPage from "../pages/ProjectsPage";
+import ContactSection from "../routes/sections/ContactSection";
+import HomeSection from "../routes/sections/HomeSection";
+import ProjectsSection from "../routes/sections/ProjectsSection";
 
 export default function Sections() {
 	return (
@@ -12,7 +12,7 @@ export default function Sections() {
 					<Route
 						path="/"
 						element={
-							<AboutPage
+							<HomeSection
 								title={
 									<>
 										<b>T</b>echnologies <b>U</b>sed
@@ -24,7 +24,7 @@ export default function Sections() {
 					<Route
 						path="/projects"
 						element={
-							<ProjectsPage
+							<ProjectsSection
 								title={
 									<>
 										<b>P</b>rojects
@@ -36,7 +36,7 @@ export default function Sections() {
 					<Route
 						path="/contact"
 						element={
-							<ContactPage
+							<ContactSection
 								title={
 									<>
 										<b>C</b>ontact

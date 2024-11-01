@@ -2,10 +2,10 @@ import React from "react";
 import Root from "./routes/root";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./404";
 import "./index.scss";
-import ProjectsPage from "./pages/ProjectsPage";
-import ContactPage from "./pages/ContactPage";
+import ErrorPage from "./404";
+import ProjectsSection from "./routes/sections/ProjectsSection";
+import ContactSection from "./routes/sections/ContactSection";
 
 const router = createBrowserRouter([
 	{
@@ -15,11 +15,11 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/projects",
-				element: <ProjectsPage />,
+				element: <ProjectsSection />,
 			},
 			{
 				path: "/contact",
-				element: <ContactPage />,
+				element: <ContactSection />,
 			},
 		],
 	},

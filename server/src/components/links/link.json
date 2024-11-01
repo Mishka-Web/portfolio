@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_links_links",
+  "info": {
+    "displayName": "social-link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "target": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

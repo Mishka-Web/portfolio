@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export default function Navigation() {
 	const navLinks = [
 		{
-			name: "About",
+			name: "Home",
 			link: "/",
 		},
 		{
@@ -23,8 +23,8 @@ export default function Navigation() {
 					<NavLink
 						className={({ isActive }) =>
 							isActive
-								? "text-primary-45 transition-all line-through text-[1vw]"
-								: "hover:text-primary-45 transition-all text-[1vw]"
+								? "text-primary-45 transition-all underline text-[1vw] underline-offset-8"
+								: "hover:text-primary-45 transition-all text-[1vw] underline-offset-8"
 						}
 						to={link}
 					>

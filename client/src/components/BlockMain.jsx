@@ -3,13 +3,14 @@ import { useState, useEffect } from "react";
 import Header from "./Header";
 import ReactMarkdown from "react-markdown";
 import axios from "axios";
+import { apiURL } from "../lib/constants";
 
 export default function BlockMain() {
 	const [desc, setDesc] = useState([]);
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:1337/api/description/?populate=*")
+			.get(`${apiURL}/api/description/?populate=*`)
 			.then((response) => setDesc(response.data.data));
 	}, []);
 
@@ -19,8 +20,8 @@ export default function BlockMain() {
 			<div className="flex w-full p-6 py-0 z-10 flex-col items-center gap-[4vh] mt-[15vh] mb-[5vh]">
 				{desc.image && (
 					<img
-						className="logo max-w-[85%] max-h-[55vh] pointer-events-none select-none z-30 rounded-full aspect-square object-contain"
-						src={"http://localhost:1337" + desc.image.url}
+						className="logo max-w-[75%] max-h-[55vh] pointer-events-none select-none z-30 rounded-full aspect-square object-contain"
+						src={apiURL + desc.image.url}
 						alt=""
 					/>
 				)}
@@ -40,7 +41,7 @@ export default function BlockMain() {
 			{desc.background && (
 				<img
 					className="w-full h-auto pointer-events-none select-none absolute bottom-0 mix-blend-multiply bg-transparent z-0"
-					src={"http://localhost:1337" + desc.background.url}
+					src={apiURL + desc.background.url}
 					alt=""
 				/>
 			)}

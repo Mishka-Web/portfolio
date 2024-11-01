@@ -4,6 +4,7 @@ import "swiper/scss";
 import "swiper/scss/navigation";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
+import { apiURL } from "../lib/constants";
 
 import arrIcon from "../assets/images/icons/arrow.svg";
 
@@ -14,7 +15,7 @@ export default function Slider() {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:1337/api/tech-cards/?populate=*")
+			.get(`${apiURL}/api/tech-cards/?populate=*`)
 			.then((response) => setCards(response.data.data))
 			.catch((error) => console.log(error));
 	}, []);
@@ -25,10 +26,10 @@ export default function Slider() {
 			slidesPerView={"auto"}
 			freeMode={true}
 			mousewheel={true}
-			speed={800}
+			speed={1000}
 			autoplay={{
-				delay: 6000,
-				disableOnInteraction: false,
+				delay: 5000,
+				disableOnInteraction: true,
 			}}
 			modules={[Navigation, Autoplay, Mousewheel]}
 			navigation={{
@@ -43,25 +44,24 @@ export default function Slider() {
 							href={link}
 							target="_blank"
 							rel="noreferrer"
-							className={`h-[40.5vh] w-[17.75vw] min-w-[32vh] p-6 rounded-3xl flex flex-col items-center gap-4 justify-center text-center transition-all duration-500`}
+							className={`h-[40.5vh] w-[17.75vw] min-h-[330px] min-w-[32vh] p-6 rounded-3xl flex flex-col items-center gap-4 justify-center text-center transition-all duration-500`}
 							style={{
-								boxShadow: `0 6px 24px 0 ${accentColor}40`,
+								boxShadow: `0 0 24px 0 ${
+									isActive
+										? "rgba(0,0,0, 0.1)"
+										: "rgba(0,0,0, 0.05)"
+								}`,
 							}}
 						>
 							{image && (
 								<img
-									className={`w-[60%] h-[13vh] object-contain aspect-square transition-all duration-500`}
-									src={"http://localhost:1337" + image.url}
+									className={`w-[60%] min-h-[6.5vw] h-[13vh] object-contain aspect-square transition-all duration-500`}
+									src={apiURL + image.url}
 									alt=""
 								/>
 							)}
 							<p
-								className={`text-2xl font-semibold transition-all duration-500 ${
-									isActive ? "opacity-100" : "opacity-65"
-								}`}
-								style={{
-									color: accentColor,
-								}}
+								className={`text-2xl font-semibold transition-all duration-500 opacity-75`}
 							>
 								{name}
 							</p>
@@ -69,11 +69,12 @@ export default function Slider() {
 					)}
 				</SwiperSlide>
 			))}
+			<SwiperSlide className="h-[40.5vh] w-[17.75vw] min-w-[32vh] "></SwiperSlide>
 			<div className="flex items-center flex-wrap gap-[1vw] mt-[6.5vh]">
 				<button
 					ref={navigationPrevRef}
 					type="button"
-					className="p-[0.5vw] inline-flex items-center justify-center rounded-full aspect-square slider__btn-prev slider__btn shadow-[0_2px_24px_0_rgba(0,0,0,0.15)] disabled:opacity-30 transition-all duration-500"
+					className="p-[0.5vw] inline-flex items-center justify-center rounded-full aspect-square slider__btn-prev slider__btn shadow-[0_2px_24px_0_rgba(0,0,0,0.1)] disabled:opacity-30 transition-all duration-500"
 				>
 					<img
 						className="w-[1.75vw] pointer-events-none select-none"
@@ -84,7 +85,7 @@ export default function Slider() {
 				<button
 					ref={navigationNextRef}
 					type="button"
-					className="p-[0.5vw] inline-flex items-center justify-center rounded-full aspect-square slider__btn-prev slider__btn shadow-[0_2px_24px_0_rgba(0,0,0,0.15)] disabled:opacity-30 transition-all duration-500"
+					className="p-[0.5vw] inline-flex items-center justify-center rounded-full aspect-square slider__btn-prev slider__btn shadow-[0_2px_24px_0_rgba(0,0,0,0.1)] disabled:opacity-30 transition-all duration-500"
 				>
 					<img
 						className="w-[1.75vw] rotate-180 pointer-events-none select-none"
