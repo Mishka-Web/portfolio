@@ -1,3 +1,3 @@
-const apiURL = "http://localhost:1337";
+const apiURL = "https://beautiful-bloom-cb8fa8c4e3.strapiapp.com";
 
-export { apiURL }
+export { apiURL };

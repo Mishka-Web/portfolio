@@ -44,7 +44,7 @@ export default function Slider() {
 							href={link}
 							target="_blank"
 							rel="noreferrer"
-							className={`h-[40.5vh] w-[17.75vw] min-h-[330px] min-w-[32vh] p-6 rounded-3xl flex flex-col items-center gap-4 justify-center text-center transition-all duration-500`}
+							className={`h-[40vh] w-[15vw] min-h-[330px] min-w-[32vh] p-6 rounded-3xl flex flex-col items-center gap-4 justify-center text-center transition-all duration-500`}
 							style={{
 								boxShadow: `0 0 24px 0 ${
 									isActive
@@ -56,7 +56,7 @@ export default function Slider() {
 							{image && (
 								<img
 									className={`w-[60%] min-h-[6.5vw] h-[13vh] object-contain aspect-square transition-all duration-500`}
-									src={apiURL + image.url}
+									src={image.url}
 									alt=""
 								/>
 							)}
@@ -69,7 +69,7 @@ export default function Slider() {
 					)}
 				</SwiperSlide>
 			))}
-			<SwiperSlide className="h-[40.5vh] w-[17.75vw] min-w-[32vh] "></SwiperSlide>
+			<SwiperSlide className="h-[40vh] w-[15vw] min-w-[32vh]"></SwiperSlide>
 			<div className="flex items-center flex-wrap gap-[1vw] mt-[6.5vh]">
 				<button
 					ref={navigationPrevRef}

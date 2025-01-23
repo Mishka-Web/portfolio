@@ -4,13 +4,14 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import favicon from "../assets/images/icons/favicon.ico";
+import { apiURL } from "../lib/constants";
 
 export default function Root() {
 	const [seo, setSeo] = useState([]);
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:1337/api/main")
+			.get(`${apiURL}/api/main`)
 			.then((response) => setSeo(response.data.data));
 	}, []);
 

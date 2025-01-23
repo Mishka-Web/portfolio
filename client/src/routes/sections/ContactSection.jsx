@@ -18,10 +18,9 @@ export default function ContactPage({ title }) {
 			<Title content={title} />
 			<ul className="list-disc list-inside">
 				{socialLinks.map((item) => (
-					<li className="mb-6 list-item" key={item.id}>
+					<li className="mb-6 list-item text-xl" key={item.id}>
 						<a className="inline-flex hover:text-primary transition-all" href={item.target} rel="noreferrer" target="_blank">
 							{item.text}
-							{/* <img src={apiURL + item.icon.url} alt="" /> */}
 						</a>
 					</li>
 				))}

@@ -11,7 +11,7 @@ export default function BlockMain() {
 	useEffect(() => {
 		axios
 			.get(`${apiURL}/api/description/?populate=*`)
-			.then((response) => setDesc(response.data.data));
+			.then((response) => setDesc(response?.data?.data));
 	}, []);
 
 	return (
@@ -21,7 +21,7 @@ export default function BlockMain() {
 				{desc.image && (
 					<img
 						className="logo max-w-[75%] max-h-[55vh] pointer-events-none select-none z-30 rounded-full aspect-square object-contain"
-						src={apiURL + desc.image.url}
+						src={desc.image.url}
 						alt=""
 					/>
 				)}
@@ -40,8 +40,8 @@ export default function BlockMain() {
 			</div>
 			{desc.background && (
 				<img
-					className="w-full h-auto pointer-events-none select-none absolute bottom-0 mix-blend-multiply bg-transparent z-0"
-					src={apiURL + desc.background.url}
+					className="w-full h-auto pointer-events-none select-none opacity-15 absolute bottom-0 bg-transparent z-0"
+					src={desc.background.url}
 					alt=""
 				/>
 			)}
